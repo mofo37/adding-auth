@@ -11,11 +11,6 @@ describe('donuteria api', () => {
       .then(res => {
         const donuteria = res.body;
         assert.deepEqual(donuteria, []);
-      })
-
-      .catch(err => {
-        console.log(err);
       });
-
   });
 });
