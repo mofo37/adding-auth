@@ -7,10 +7,15 @@ describe('donuteria api', () => {
   before(db.drop);
 
   it('initial GET returns empty list', () => {
-    return request.get('/donuteria')
-      .then(req => {
-        const donuteria = req.body;
+    return request.get('/donuterias')
+      .then(res => {
+        const donuteria = res.body;
         assert.deepEqual(donuteria, []);
+      })
+
+      .catch(err => {
+        console.log(err);
       });
+
   });
 });
