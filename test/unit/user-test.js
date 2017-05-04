@@ -12,8 +12,7 @@ describe('user model', () => {
 
     assert.notEqual(user.hash, password);
 
-    assert.isOk(user.comparePassword,('fog'));
-    assert.isNotOk(user.comparePassword,('bad password'));
-
+    assert.isOk(user.comparePassword('fog'));
+    assert.isNotOk(user.comparePassword('bad password'));
   });
 });
