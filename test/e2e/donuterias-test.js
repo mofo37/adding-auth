@@ -13,4 +13,29 @@ describe('donuteria api', () => {
         assert.deepEqual(donuteria, []);
       });
   });
+
+  let uptown = {
+    name: 'Uptown'
+  };
+
+  function saveDonuteria(donuteria){
+    return request
+      .post('/donuterias')
+      .send(donuteria)
+      .then(res => res.body);
+  }
+
+  it('roundtrips a new donuteria', () => {
+    return saveDonuteria(uptown)
+      .then(saved => {
+        uptown = saved;
+      })
+      .then(() => {
+        return request.get(`/donuterias/${uptown}`);
+      })
+      .then(res => res.body)
+      .then(got => {
+        assert.deepEqual(got, Object.assign(uptown));
+      });
+  });
 });

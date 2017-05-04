@@ -3,7 +3,7 @@ const User = require('../../lib/models/user');
 
 describe('user model', () => {
 
-  it.only('new user generates hash', () => {
+  it('new user generates hash', () => {
     const user = new User({
       userName: 'mofo37'
     });
@@ -13,6 +13,6 @@ describe('user model', () => {
     assert.notEqual(user.hash, password);
 
     assert.isOk(user.comparePassword('fog'));
-    assert.isNotOk(user.comparePassword('bad password'));
+    assert.isNotOk(user.comparePassword('foijfrewfm'));
   });
 });
