@@ -3,7 +3,7 @@ const User = require('../../lib/models/user');
 
 describe('user model', () => {
 
-  it('new user generates hash', () => {
+  it.only('new user generates hash', () => {
     const user = new User({
       userName: 'mofo37'
     });
