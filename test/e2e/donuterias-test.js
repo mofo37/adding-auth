@@ -32,11 +32,12 @@ describe('donuteria api', () => {
         uptown = saved;
       })
       .then(() => {
+        console.log('UPTOWN', uptown._id);
         return request.get(`/donuterias/${uptown._id}`);
       })
       .then(res => res.body)
       .then(got => {
-        assert.deepEqual(got, (uptown._id));
+        assert.deepEqual(got, uptown);
       });
   });
 });
