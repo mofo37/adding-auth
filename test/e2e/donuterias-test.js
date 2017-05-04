@@ -28,14 +28,15 @@ describe('donuteria api', () => {
   it('roundtrips a new donuteria', () => {
     return saveDonuteria(uptown)
       .then(saved => {
+        assert.isOk(saved._id);
         uptown = saved;
       })
       .then(() => {
-        return request.get(`/donuterias/${uptown}`);
+        return request.get(`/donuterias/${uptown._id}`);
       })
       .then(res => res.body)
       .then(got => {
-        assert.deepEqual(got, Object.assign(uptown));
+        assert.deepEqual(got, (uptown._id));
       });
   });
 });
