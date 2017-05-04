@@ -13,7 +13,7 @@ describe('donuteria model', () => {
 
 describe('validation failures', () => {
 
-  it.only('name is required', () => {
+  it('name is required', () => {
     const donuteria = new Donuteria();
     return donuteria.validate()
       .then(expectedValidation,
