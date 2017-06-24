@@ -1,10 +1,23 @@
-const db = require('./helpers/db');
-const request = require('./helpers/request');
+const db = require('./_db');
+const request = require('./_request');
 const assert = require('chai').assert;
 
 describe('donuteria api', () => {
 
   before(db.drop);
+
+  let token = '';
+
+  const user = {
+    email: 'user',
+    password: 'abc'
+  };
+
+  it('signs in a user', () => {
+    return request.post('/auth/signin')
+      .set('Authorization', token)
+      .send(user);
+  });
 
   it('initial GET returns empty list', () => {
     return request.get('/donuterias')
@@ -18,7 +31,7 @@ describe('donuteria api', () => {
     name: 'Uptown'
   };
 
-  function saveDonuteria(donuteria){
+  function saveDonuteria(donuteria) {
     return request
       .post('/donuterias')
       .send(donuteria)
@@ -32,7 +45,6 @@ describe('donuteria api', () => {
         uptown = saved;
       })
       .then(() => {
-        console.log('UPTOWN', uptown._id);
         return request.get(`/donuterias/${uptown._id}`);
       })
       .then(res => res.body)

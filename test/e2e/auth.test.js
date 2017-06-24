@@ -1,5 +1,5 @@
-const db = require('./helpers/db');
-const request = require('./helpers/request');
+const db = require('./_db');
+const request = require('./_request');
 const assert = require('chai').assert;
 
 describe('auth', () => {

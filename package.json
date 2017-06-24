@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "lint": "eslint .",
+    "//pretest": "npm run lint",
+    "test": "mocha --recursive",
+    "test:watch": "npm run test -- -w",
+    "test:unit": "mocha test/unit",
+    "test:e2e": "mocha test/e2e",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +25,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint": "^3.19.0",
     "mocha": "^3.3.0"
   },
@@ -27,6 +34,8 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongoose": "^4.9.7",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "jsonwebtoken-promisified": "^1.0.3",
+    "mongodb": "^2.2.26"
   }
 }
