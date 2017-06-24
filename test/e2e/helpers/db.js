@@ -1,6 +1,6 @@
 process.env.MONGODB_URI = 'mongodb://localhost:27017/adding-auth-test';
 
-require('../../lib/connect'); 
+require('../../../lib/connect'); 
 
 const connection = require('mongoose').connection;
 
